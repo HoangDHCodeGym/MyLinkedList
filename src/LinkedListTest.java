@@ -11,5 +11,9 @@ public class LinkedListTest {
         ll.remove(2);
         System.out.println("New list:");
         ll.printList();
+        System.out.println("Delete data");
+        ll.removeData(12);
+        ll.printList();
+
     }
 }

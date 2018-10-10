@@ -1,5 +1,6 @@
 public class MyLinkedList<T> {
     Node head;
+    Node tail;
     int numNodes;
 
     public MyLinkedList(T data) {
@@ -43,6 +44,14 @@ public class MyLinkedList<T> {
         numNodes++;
     }
 
+    public void addLast(T data) {
+        Node temp = head;
+        while (temp.next != null ) {
+            temp = temp.next;
+        }
+        temp.next = new Node(data);
+    }
+
     public Node get(int index) {
         Node temp = head;
         for (int i = 0; i < index; i++) {
@@ -54,10 +63,22 @@ public class MyLinkedList<T> {
     public void remove(int index) {
         Node temp = this.get(index-1);
         temp.next = temp.next.next;
+        numNodes--;
+    }
+
+    public void removeData(T data) {
+        Node temp = head;
+        while (temp.next != null) {
+          if (temp.next.getData() == data) {
+            temp.next = temp.next.next;
+          }
+          temp = temp.next;
+        }
     }
 
     public void printList() {
         Node temp = head;
+        System.out.println("My List:");
         while (temp != null) {
             System.out.println(temp.getData());
             temp = temp.next;
